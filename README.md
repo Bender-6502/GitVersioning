@@ -1,4 +1,4 @@
-<img src="https://git-server.steve-evans.info:30008/Bender-6502/GitVersioning/raw/branch/master/GitVersioning/assets/GitVersioning.png" width="25%"></img>
+<img src="https://github.com/Bender-6502/GitVersioning/blob/master/GitVersioning/assets/GitVersioning.png" width="25%"></img>
 # GitVersioning
 
 Version 1.0.0
