@@ -29,8 +29,8 @@ env:
     shell: bash
     run: |
       echo 'major: ${{ env.major }}' > "${{ env.workflowFile }}"
-      echo 'minor: ${{ env.minor }}' > "${{ env.workflowFile }}"
-      echo 'build: ${{ env.build }}' > "${{ env.workflowFile }}"
+      echo 'minor: ${{ env.minor }}' >> "${{ env.workflowFile }}"
+      echo 'build: ${{ env.build }}' >> "${{ env.workflowFile }}"
       echo 'revis: ${{ env.revis }}' >> "${{ env.workflowFile }}"
 ```
 
