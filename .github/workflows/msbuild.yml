@@ -7,7 +7,7 @@ env:
   build: 0
   revis: ${{ github.run_number }}
   version: 1.0.0.${{ github.run_number }}
-  workflowFile: GitVersioningTest/GitVersioningBuildVersion.def
+  workflowFile: GitVersioningTest/GitVersioning/GitVersioningBuildVersion.def
   
 on:
   push:
