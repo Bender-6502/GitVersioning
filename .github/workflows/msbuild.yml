@@ -1,0 +1,55 @@
+name: dotnet
+
+env:
+  project: GitVersioning
+  major: 1
+  minor: 0
+  build: 0
+  revis: ${{ github.run_number }}
+  version: 1.0.0.${{ github.run_number }}
+  workflowFile: GitVersioningTest/GitVersioningBuildVersion.def
+  
+on:
+  push:
+    branches: [ "dev", "master" ]
+  pull_request:
+    branches: [ "dev", "master" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+                
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Install MAUI workload
+      run: dotnet workload install maui
+        
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Update GitVersioningBuildVersion.def
+      shell: bash
+      run: |
+        echo 'major: ${{ env.major }}' >  "${{ env.workflowFile }}"
+        echo 'minor: ${{ env.minor }}' >> "${{ env.workflowFile }}"
+        echo 'build: ${{ env.build }}' >> "${{ env.workflowFile }}"
+        echo 'revis: ${{ env.revis }}' >> "${{ env.workflowFile }}"
+
+    - name: Build and Publish
+      run: dotnet publish --configuration Release --framework net9.0-windows10.0.19041.0
+      
+    - name: Uploading artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{env.project}}-Release-${{ env.version }}
+        path: |
+          ./GitVersioning/bin/Release
+          ./GitVersioningTest/bin/Release
+        retention-days: 14

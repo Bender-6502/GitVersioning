@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="GitVersioning/GitVersioning.csproj" />
+  <Project Path="GitVersioningTest/GitVersioningTest.csproj" Id="7c435d08-96f3-4b4a-b4f4-ed46ed12810e">
+    <Deploy Solution="Release|*" />
+  </Project>
+</Solution>
