@@ -19,7 +19,7 @@ Usage
 2. In your Workflow file, add the following lines populate the WorkflowFile.def:
 ```yaml
 env:
-  workflowFile: WorkflowFile.def
+  workflowFile: ./GitVersioning/WorkflowFile.def
   major: 1
   minor: 2
   build: 3
